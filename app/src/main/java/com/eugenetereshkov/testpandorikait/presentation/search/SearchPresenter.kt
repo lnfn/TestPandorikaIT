@@ -26,7 +26,7 @@ class SearchPresenter @Inject constructor(
     }
 
     fun search(query: String) {
-        if (disposable?.isDisposed != false == false) disposable?.dispose()
+        if (disposable?.isDisposed == false) disposable?.dispose()
 
         disposable = searchRepository.search(query.replace(" ", "+"))
                 .subscribe(this::handleResult, this::handleError)
